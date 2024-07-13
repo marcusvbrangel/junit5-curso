@@ -6,5 +6,9 @@ public class Calculadora {
         return  primeiroNumero + segundoNumero;
     }
 
+    public float dividirDoisNumeros(int numerador, int denominador) {
+        return (float) numerador / denominador;
+    }
+
 }
 

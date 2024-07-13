@@ -8,9 +8,10 @@ import java.util.ArrayList;
 
 class CalculadoraTest {
 
+    private Calculadora calculadora = new Calculadora();
+
     @Test
     public void testarSomarDoisNumeros() {
-        Calculadora calculadora = new Calculadora();
         Assertions.assertEquals(5, calculadora.somarDoisNumeros(2, 3));
     }
 
@@ -29,8 +30,39 @@ class CalculadoraTest {
         Assertions.assertNotSame(l1, l2);      // referência...
         Assertions.assertNull(l3);
 //        Assertions.fail("falhou pelo motivo xyz...");
-
-
     }
+
+    @Test
+    public void testarDividirDoisNumerosDeveRetornarNumeroInteiro() {
+        float resultado = calculadora.dividirDoisNumeros(6, 2);
+        Assertions.assertEquals(3, resultado);
+    }
+
+    @Test
+    public void testarDividirDoisNumerosDeveRetornarNumeroNegativo() {
+        float resultado = calculadora.dividirDoisNumeros(6, -2);
+        Assertions.assertEquals(-3, resultado);
+    }
+
+    @Test
+    public void testarDividirDoisNumerosDeveRetornarNumeroDecimal() {
+        float resultado = calculadora.dividirDoisNumeros(10, 3);
+//        Assertions.assertEquals(3.3333332538604736, resultado);
+        Assertions.assertEquals(3.33, resultado, 0.01);
+    }
+
+    @Test
+    public void testarDividirDoisNumerosComDenominadorZero() {
+        ArithmeticException arithmeticException = Assertions.assertThrows(ArithmeticException.class, () -> {
+//            calculadora.dividirDoisNumeros(10, 0);
+            float resultado = 10 / 0;
+        });
+        Assertions.assertEquals("/ by zero", arithmeticException.getMessage());
+    }
+
+
+
+
+
 
 }
