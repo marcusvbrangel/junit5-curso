@@ -1,0 +1,7 @@
+Id, Nome, Email, Senha, Mensagem
+1, NULL, fulano@gmail.com, 123456, Nome é obrigatório
+1, joão, NULL, 123456, Email é obrigatório
+1, joão, joao.com, 123456, Email inválido
+1, joão, joao@gmail.com, NULL, Senha é obrigatória
+1, joão, joao@gmail.com, 123456, Senha deve ter no mínimo 8 caracteres
+1, joão, joao@gmail.com, 12345678, Senha deve ter letras números e caracteres especiais

@@ -6,6 +6,7 @@ import com.marvin.barriga.domain.exception.ValidationException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -130,14 +131,23 @@ class UsuarioTest {
         assertEquals(mensagem, validationException.getMessage());
     }
 
-
-
-
-
-
-
-
-
-
+    @ParameterizedTest
+//    @CsvFileSource(files = "src/test/resources/usuario-validacao-campos.csv", nullValues = "NULL", numLinesToSkip = 1)
+    @CsvFileSource(
+            files = "src/test/resources/usuario-validacao-campos.csv",
+            nullValues = "NULL",
+            useHeadersInDisplayName = true)
+    @DisplayName("Deve validar todos os campos (External CSV Values)")
+    void deveValidarTodosOsCamposExternalCsvValues(
+            Long id, String nome, String email, String senha, String mensagem) {
+        ValidationException validationException = assertThrows(ValidationException.class, () ->
+                UsuarioBuilder.novoUsuario()
+                        .comId(id)
+                        .comNome(nome)
+                        .comEmail(email)
+                        .comSenha(senha)
+                        .criar());
+        assertEquals(mensagem, validationException.getMessage());
+    }
 
 }
