@@ -31,7 +31,7 @@ public class Usuario {
         if (senha.length() < 8)
             throw new ValidationException("Senha deve ter no mínimo 8 caracteres");
         if (!senha.matches(".*[^a-zA-Z0-9].*"))
-            throw new ValidationException("Senha deve ter letras, números e caracteres especiais");
+            throw new ValidationException("Senha deve ter letras números e caracteres especiais");
     }
 
     public Long id() {
