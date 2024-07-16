@@ -1,11 +1,13 @@
 package com.marvin;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.ArrayList;
 
+@DisplayName("Dominio Calculadora")
 class CalculadoraTest {
 
     private Calculadora calculadora = new Calculadora();

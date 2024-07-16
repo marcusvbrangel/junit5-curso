@@ -23,7 +23,7 @@ class UsuarioTest {
     @Test
     @DisplayName("Criar usuário com dados válidos")
     void criarUsuarioComDadosValidos() {
-        Usuario usuario = UsuarioBuilder.novoUsuario().criar();
+        Usuario usuario = UsuarioBuilder.criar().usar();
         assertAll("usuario",
                 () -> assertEquals(ID_VALIDO, usuario.id(), "id invalido"),
                 () -> assertEquals(NOME_VALIDO, usuario.nome(), "nome invalido"),
@@ -36,7 +36,7 @@ class UsuarioTest {
     @DisplayName("Ao tentar criar usuário sem nome, deve lançar uma exception")
     void criarUsuarioSemNomeLancarException() {
         ValidationException validationException = assertThrows(ValidationException.class, () ->
-                UsuarioBuilder.novoUsuario().comNome(null).criar());
+                UsuarioBuilder.criar().comNome(null).usar());
         assertEquals("Nome é obrigatório", validationException.getMessage());
     }
 
@@ -44,7 +44,7 @@ class UsuarioTest {
     @DisplayName("Ao tentar criar usuário sem email, deve lançar uma exception")
     void criarUsuarioSemEmailLancarException() {
         ValidationException validationException = assertThrows(ValidationException.class, () ->
-                UsuarioBuilder.novoUsuario().comEmail(null).criar());
+                UsuarioBuilder.criar().comEmail(null).usar());
         assertEquals("Email é obrigatório", validationException.getMessage());
     }
 
@@ -52,7 +52,7 @@ class UsuarioTest {
     @DisplayName("Ao tentar criar usuário com email invalido, deve lançar uma exception")
     void criarUsuarioComEmailInvalidoLancarException() {
         ValidationException validationException = assertThrows(ValidationException.class, () ->
-                UsuarioBuilder.novoUsuario().comEmail("fulanogmail.com").criar());
+                UsuarioBuilder.criar().comEmail("fulanogmail.com").usar());
         assertEquals("Email inválido", validationException.getMessage());
     }
 
@@ -60,7 +60,7 @@ class UsuarioTest {
     @DisplayName("Ao tentar criar usuário sem senha, deve lançar uma exception")
     void criarUsuarioSemSenhaLancarException() {
         ValidationException validationException = assertThrows(ValidationException.class, () ->
-                UsuarioBuilder.novoUsuario().comSenha(null).criar());
+                UsuarioBuilder.criar().comSenha(null).usar());
         assertEquals("Senha é obrigatória", validationException.getMessage());
     }
 
@@ -68,7 +68,7 @@ class UsuarioTest {
     @DisplayName("Ao tentar criar usuário com senha invalida (menor que 8 caracteres), deve lançar uma exception")
     void criarUsuarioComSenhaInvalidaMenorQueOitoCaracteresLancarExceptionX() {
         ValidationException validationException = assertThrows(ValidationException.class, () ->
-                UsuarioBuilder.novoUsuario().comSenha("123456").criar());
+                UsuarioBuilder.criar().comSenha("123456").usar());
         assertEquals("Senha deve ter no mínimo 8 caracteres", validationException.getMessage());
     }
 
@@ -77,7 +77,7 @@ class UsuarioTest {
             "deve lançar uma exception")
     void criarUsuarioComSenhaInvalidaSemCaracteresExpeciaisLancarExceptionX() {
         ValidationException validationException = assertThrows(ValidationException.class, () ->
-                UsuarioBuilder.novoUsuario().comSenha("12345678").criar());
+                UsuarioBuilder.criar().comSenha("12345678").usar());
         assertEquals("Senha deve ter letras números e caracteres especiais", validationException.getMessage());
     }
 
@@ -122,12 +122,12 @@ class UsuarioTest {
     @DisplayName("Deve validar todos os campos")
     void deveValidarTodosOsCampos(Long id, String nome, String email, String senha, String mensagem) {
         ValidationException validationException = assertThrows(ValidationException.class, () ->
-                UsuarioBuilder.novoUsuario()
+                UsuarioBuilder.criar()
                         .comId(id)
                         .comNome(nome)
                         .comEmail(email)
                         .comSenha(senha)
-                        .criar());
+                        .usar());
         assertEquals(mensagem, validationException.getMessage());
     }
 
@@ -141,12 +141,12 @@ class UsuarioTest {
     void deveValidarTodosOsCamposExternalCsvValues(
             Long id, String nome, String email, String senha, String mensagem) {
         ValidationException validationException = assertThrows(ValidationException.class, () ->
-                UsuarioBuilder.novoUsuario()
+                UsuarioBuilder.criar()
                         .comId(id)
                         .comNome(nome)
                         .comEmail(email)
                         .comSenha(senha)
-                        .criar());
+                        .usar());
         assertEquals(mensagem, validationException.getMessage());
     }
 

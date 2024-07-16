@@ -10,7 +10,7 @@ public class UsuarioBuilder {
 
     private UsuarioBuilder() {}
 
-    public static UsuarioBuilder novoUsuario() {
+    public static UsuarioBuilder criar() {
         UsuarioBuilder builder = new UsuarioBuilder();
         inicializarDadosPadroes(builder);
         return builder;
@@ -43,7 +43,7 @@ public class UsuarioBuilder {
         return this;
     }
 
-    public Usuario criar() {
+    public Usuario usar() {
         return new Usuario(id, nome, email, senha);
     }
 
