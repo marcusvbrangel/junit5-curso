@@ -18,8 +18,8 @@ public class UsuarioBuilder {
 
     private static void inicializarDadosPadroes(UsuarioBuilder builder) {
         builder.id = 1L;
-        builder.nome = "Fulano";
-        builder.email = "fulano@gmail.com";
+        builder.nome = "Usuário Padrão";
+        builder.email = "usuariopadrao@gmail.com";
         builder.senha = "fds#1234";
     }
 

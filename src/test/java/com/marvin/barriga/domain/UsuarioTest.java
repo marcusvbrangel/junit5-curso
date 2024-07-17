@@ -12,12 +12,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Dominio Usuário")
+@DisplayName("Dominio Usuário - Model")
 class UsuarioTest {
 
     private static final Long ID_VALIDO = 1L;
-    private static final String NOME_VALIDO = "Fulano";
-    private static final String EMAIL_VALIDO = "fulano@gmail.com";
+    private static final String NOME_VALIDO = "Usuário Padrão";
+    private static final String EMAIL_VALIDO = "usuariopadrao@gmail.com";
     private static final String SENHA_VALIDA = "fds#1234";
 
     @Test
@@ -148,6 +148,18 @@ class UsuarioTest {
                         .comSenha(senha)
                         .usar());
         assertEquals(mensagem, validationException.getMessage());
+    }
+
+    @Test
+    @DisplayName("Todos os atributos devem estar válidos após salvar")
+    void todosOsAtributosDevemEstarValidosAposSalvar() {
+        Usuario usuarioSalvo = UsuarioBuilder.criar().usar();
+        assertAll("usuario",
+                () -> assertEquals(ID_VALIDO, usuarioSalvo.id(), "id invalido"),
+                () -> assertEquals(NOME_VALIDO, usuarioSalvo.nome(), "nome invalido"),
+                () -> assertEquals(EMAIL_VALIDO, usuarioSalvo.email(), "email invalido"),
+                () -> assertEquals(SENHA_VALIDA, usuarioSalvo.senha(), "senha invalida")
+        );
     }
 
 }

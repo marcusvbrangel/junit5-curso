@@ -1,0 +1,194 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Usuario</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.marvin.barriga.domain</a>
+</div>
+
+<h1>Coverage Summary for Class: Usuario (com.marvin.barriga.domain)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Usuario</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88,9%
+  </span>
+  <span class="absValue">
+    (8/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (18/24)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87,5%
+  </span>
+  <span class="absValue">
+    (28/32)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.marvin.barriga.domain;
+&nbsp;
+&nbsp;import com.marvin.barriga.domain.exception.ValidationException;
+&nbsp;
+&nbsp;public class Usuario {
+&nbsp;
+&nbsp;    private Long id;
+&nbsp;    private String nome;
+&nbsp;    private String email;
+&nbsp;    private String senha;
+&nbsp;
+<b class="fc">&nbsp;    public Usuario(Long id, String nome, String email, String senha) {</b>
+&nbsp;
+<b class="fc">&nbsp;        validarUsuario(nome, email, senha);</b>
+&nbsp;
+<b class="fc">&nbsp;        this.id = id;</b>
+<b class="fc">&nbsp;        this.nome = nome;</b>
+<b class="fc">&nbsp;        this.email = email;</b>
+<b class="fc">&nbsp;        this.senha = senha;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static void validarUsuario(String nome, String email, String senha) {
+<b class="pc">&nbsp;        if (nome == null || nome.trim().isEmpty())</b>
+<b class="fc">&nbsp;            throw new ValidationException(&quot;Nome é obrigatório&quot;);</b>
+<b class="pc">&nbsp;        if (email == null || email.trim().isEmpty())</b>
+<b class="fc">&nbsp;            throw new ValidationException(&quot;Email é obrigatório&quot;);</b>
+<b class="fc">&nbsp;        if (!email.matches(&quot;.*@.*&quot;))</b>
+<b class="fc">&nbsp;            throw new ValidationException(&quot;Email inválido&quot;);</b>
+<b class="pc">&nbsp;        if (senha == null || senha.trim().isEmpty())</b>
+<b class="fc">&nbsp;            throw new ValidationException(&quot;Senha é obrigatória&quot;);</b>
+<b class="fc">&nbsp;        if (senha.length() &lt; 8)</b>
+<b class="fc">&nbsp;            throw new ValidationException(&quot;Senha deve ter no mínimo 8 caracteres&quot;);</b>
+<b class="fc">&nbsp;        if (!senha.matches(&quot;.*[^a-zA-Z0-9].*&quot;))</b>
+<b class="fc">&nbsp;            throw new ValidationException(&quot;Senha deve ter letras números e caracteres especiais&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Long id() {
+<b class="fc">&nbsp;        return id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String nome() {
+<b class="fc">&nbsp;        return nome;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String email() {
+<b class="fc">&nbsp;        return email;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String senha() {
+<b class="fc">&nbsp;        return senha;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean equals(Object obj) {
+<b class="pc">&nbsp;        if (obj == null) {</b>
+<b class="nc">&nbsp;            return false;</b>
+&nbsp;        }
+<b class="pc">&nbsp;        if (getClass() != obj.getClass()) {</b>
+<b class="nc">&nbsp;            return false;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        final Usuario other = (Usuario) obj;</b>
+<b class="pc">&nbsp;        if (this.id != other.id) {</b>
+<b class="nc">&nbsp;            return false;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public int hashCode() {
+<b class="nc">&nbsp;        return id.hashCode();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="fc">&nbsp;        return &quot;{&quot; + &quot;id=&quot; + id + &quot;, nome=&quot; + nome + &quot;, email=&quot; + email + &quot;, senha=&quot; + senha + &#39;}&#39;;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-07-17 19:00</div>
+</div>
+</body>
+</html>

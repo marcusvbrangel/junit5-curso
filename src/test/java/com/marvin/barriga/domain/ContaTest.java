@@ -12,7 +12,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-@DisplayName("Dominio Conta")
+@DisplayName("Dominio Conta - Model")
 public class ContaTest {
 
     @Test
