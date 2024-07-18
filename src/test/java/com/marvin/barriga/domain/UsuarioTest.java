@@ -12,7 +12,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Dominio Usuário - Model")
+@DisplayName("Usuário - Model")
 class UsuarioTest {
 
     private static final Long ID_VALIDO = 1L;

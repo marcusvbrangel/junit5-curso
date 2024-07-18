@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.ArrayList;
 
-@DisplayName("Dominio Calculadora")
+@DisplayName("Calculadora")
 class CalculadoraTest {
 
     private Calculadora calculadora = new Calculadora();

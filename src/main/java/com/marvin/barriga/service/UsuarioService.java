@@ -5,6 +5,7 @@ import com.marvin.barriga.domain.exception.ValidationException;
 import com.marvin.barriga.service.repositories.UsuarioRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UsuarioService {
 
@@ -25,6 +26,10 @@ public class UsuarioService {
 
     public List<Usuario> findAll() {
         return usuarioRepository.findAll();
+    }
+
+    public Optional<Usuario> findByEmail(String email) {
+        return usuarioRepository.findByEmail(email);
     }
 
 }
