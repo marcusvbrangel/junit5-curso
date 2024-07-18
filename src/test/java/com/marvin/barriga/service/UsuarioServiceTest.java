@@ -5,19 +5,21 @@ import com.marvin.barriga.domain.builder.UsuarioBuilder;
 import com.marvin.barriga.domain.exception.ValidationException;
 import com.marvin.barriga.service.repositories.UsuarioRepository;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 @DisplayName("Usuário - Service")
+@ExtendWith(MockitoExtension.class)
 public class UsuarioServiceTest {
 
     @Mock
@@ -26,10 +28,10 @@ public class UsuarioServiceTest {
     @InjectMocks
     private UsuarioService sut;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
+//    @BeforeEach
+//    void setUp() {
+//        MockitoAnnotations.openMocks(this);
+//    }
 
     @Test
     @DisplayName("Deve retornar um Usuário Vazio quando buscar por um Email Inexistente")
@@ -116,5 +118,37 @@ public class UsuarioServiceTest {
         Assertions.assertEquals("Email já cadastrado", exception.getMessage());
     }
 
+    @Test
+    @DisplayName("Deve criar uma nova instância de UsuarioService")
+    void deveCriarNovaInstanciaDeUsuarioService() {
+        sut = new UsuarioService(usuarioRepository);
+        assertNotNull(sut);
+    }
+
+    @Test
+    @DisplayName("Deve retornar todos os Usuários quando houver usuários cadastrados")
+    void deveRetornarTodosOsUsuariosQuandoHouverUsuariosCadastrados() {
+        List<Usuario> usuarios = List.of(
+                UsuarioBuilder.criar().comEmail("usuario1@terra.com").usar(),
+                UsuarioBuilder.criar().comEmail("usuario2@terra.com").usar()
+        );
+        when(usuarioRepository.findAll()).thenReturn(usuarios);
+
+        List<Usuario> resultado = sut.findAll();
+
+        Assertions.assertEquals(2, resultado.size());
+        Assertions.assertEquals("usuario1@terra.com", resultado.get(0).email());
+        Assertions.assertEquals("usuario2@terra.com", resultado.get(1).email());
+    }
+
+    @Test
+    @DisplayName("Deve retornar uma lista vazia quando não houver usuários cadastrados")
+    void deveRetornarUmaListaVaziaQuandoNaoHouverUsuariosCadastrados() {
+        when(usuarioRepository.findAll()).thenReturn(List.of());
+
+        List<Usuario> resultado = sut.findAll();
+
+        Assertions.assertTrue(resultado.isEmpty());
+    }
 
 }

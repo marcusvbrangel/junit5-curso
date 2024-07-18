@@ -1,0 +1,39 @@
+
+--------------------------------------
+
+crie uma messagem de commit baseado somente nestas ultimas e
+somente ultimas novas implementações...
+começando com o texto "feat:" depois com um cabeçalho resumido
+das novas implementações e depois uma lista de cada implementação
+de forma bem resumida
+
+
+--------------------------------------
+
+
+--------------------------------------
+
+
+--------------------------------------
+
+
+
+--------------------------------------
+
+
+
+--------------------------------------
+
+
+
+--------------------------------------
+
+
+
+--------------------------------------
+
+
+
+--------------------------------------
+
+
