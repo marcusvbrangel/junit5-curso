@@ -57,7 +57,7 @@ public class Conta {
 
     @Override
     public String toString() {
-        return "Conta{" + "id=" + id + ", nome=" + nome + ", usuario=" + usuario + '}';
+        return "{" + "id=" + id + ", nome=" + nome + ", usuario=" + usuario + '}';
     }
 
 }
