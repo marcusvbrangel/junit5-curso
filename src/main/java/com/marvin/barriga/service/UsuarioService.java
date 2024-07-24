@@ -12,7 +12,6 @@ public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
 
     public UsuarioService(final UsuarioRepository usuarioRepository) {
-        System.out.println("=> UsuarioService => Criando nova instancia...");
         this.usuarioRepository = usuarioRepository;
     }
 

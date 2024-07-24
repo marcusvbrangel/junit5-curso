@@ -27,4 +27,14 @@ public class ContaMemoryRepository implements ContaRepository {
         return List.of();
     }
 
+    @Override
+    public List<Conta> findAll() {
+        return contas;
+    }
+
+    @Override
+    public List<Conta> obterContasPorUsuarioId(Long usuarioId) {
+        return List.of();
+    }
+
 }
